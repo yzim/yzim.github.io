@@ -3,97 +3,488 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>yzim</title>
+  <title>Zhe Yang</title>
+  <meta name="description" content="Homepage of Zhe Yang.">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff;
+      --text: #1c2430;
+      --muted: #556070;
+      --line: #e3e8ef;
+      --accent: #1c63a5;
+      --soft: #f5f8fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #fafafa;
-      color: #1d1d1f;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.58;
     }
 
-    main {
-      max-width: 640px;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.25rem;
-    }
-
-    .subtitle {
-      font-size: 1.125rem;
-      color: #6e6e73;
-      margin-bottom: 2rem;
-    }
-
-    section {
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: #1d1d1f;
-    }
-
-    p {
-      color: #424245;
-      margin-bottom: 0.75rem;
-    }
-
-    .links a {
-      display: inline-block;
-      color: #0066cc;
+    a {
+      color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
-      margin-right: 1rem;
     }
 
-    .links a:hover {
+    a:hover {
       text-decoration: underline;
     }
 
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 30px 22px 48px;
+    }
+
+    .header-flex {
+      padding-bottom: 0.25rem;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.82rem;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .contact p,
+    .intro p {
+      margin: 0 0 5px;
+    }
+
+    .quick-links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 400;
+    }
+
+    .pill svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
+
+    section {
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 0 0 8px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .publication-list {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .publication-list li {
+      margin: 0 0 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .publication-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .authors,
+    .venue {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .authors a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .authors a:hover {
+      color: inherit;
+      text-decoration: none;
+      border-bottom-color: currentColor;
+    }
+
+    .me {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .award-inline {
+      color: #b54708;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .award-note {
+      margin-top: 3px;
+      color: #b54708;
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .resource-links {
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      font-size: 0.86rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1.15;
+    }
+
+    .resource-link svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .star-count {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 500;
+      margin-left: 2px;
+    }
+
     footer {
-      margin-top: 3rem;
-      font-size: 0.875rem;
-      color: #86868b;
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.05rem;
+      }
+    }
+
+    @media (max-width: 567px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+
+      .quick-links {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>yzim</h1>
-    <p class="subtitle">a place for things i build and think about</p>
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+    <symbol id="icon-scholar" viewBox="0 0 16 16">
+      <path d="M8 1 0 5.2l8 4.2 6.56-3.44V11H16V5.2L8 1Zm-4.89 7.2V10c0 1.97 2.17 3.57 4.89 3.57s4.89-1.6 4.89-3.57V8.2L8 10.8Z"/>
+    </symbol>
+    <symbol id="icon-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.63 2.29 6.71 5.47 7.8.4.08.55-.18.55-.4 0-.2-.01-.86-.01-1.56-2.01.38-2.53-.5-2.69-.95-.09-.23-.48-.95-.82-1.14-.28-.16-.68-.56-.01-.57.63-.01 1.08.59 1.23.84.72 1.23 1.87.88 2.33.67.07-.54.28-.88.5-1.08-1.78-.21-3.64-.92-3.64-4.07 0-.9.31-1.64.82-2.22-.08-.21-.36-1.05.08-2.19 0 0 .67-.22 2.2.85.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.07 2.2-.85 2.2-.85.44 1.14.16 1.98.08 2.19.51.58.82 1.31.82 2.22 0 3.16-1.87 3.86-3.65 4.07.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .22.15.49.55.4A8.21 8.21 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"/>
+    </symbol>
+    <symbol id="icon-paper" viewBox="0 0 16 16">
+      <path d="M3 1.75A1.75 1.75 0 0 1 4.75 0h4.69c.46 0 .9.18 1.22.5l2.84 2.84c.32.32.5.76.5 1.22v9.69A1.75 1.75 0 0 1 12.25 16h-7.5A1.75 1.75 0 0 1 3 14.25Zm6.5.81v2.19c0 .69.56 1.25 1.25 1.25h2.19ZM5.75 8a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5Zm0 3a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5Z"/>
+    </symbol>
+  </svg>
+  <main class="page">
+    <header class="header-flex">
+      <h1>Zhe Yang</h1>
+      <div class="contact">
+        <p>Email: yangzhe DOT ac AT outlook DOT com</p>
+      </div>
+      <div class="quick-links">
+        <a class="pill" href="https://scholar.google.com/citations?user=jYPrgKYAAAAJ">
+          <svg aria-hidden="true"><use href="#icon-scholar"></use></svg>
+          Google Scholar
+        </a>
+        <a class="pill" href="https://github.com/yzim">
+          <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+          GitHub
+        </a>
+      </div>
+    </header>
 
-    <section>
-      <h2>about</h2>
-      <p>hello. i build software, design systems, and explore ideas at the intersection of code and craft.</p>
+    <section class="intro">
+      <h2>About Me</h2>
+      <p>I currently work on next-generation storage at Huawei, driven by emerging applications and new hardware platforms.</p>
+      <p>I received my Ph.D. degree in the <a href="https://www.cs.tsinghua.edu.cn/csen/">Department of Computer Science and Technology</a>, <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>, supervised by Prof. <a href="http://storage.cs.tsinghua.edu.cn/~jiwu-shu/">Jiwu Shu</a> and <a href="http://storage.cs.tsinghua.edu.cn/~lu/">Youyou Lu</a> in the <a href="http://storage.cs.tsinghua.edu.cn/">Storage Group</a>. My Ph.D. research especially focused on storage systems for heterogeneous hardware, together with persistent memory, RDMA, and near-data processing.</p>
     </section>
 
     <section>
-      <h2>projects</h2>
-      <p>nothing here yet — check back soon.</p>
+      <h2>Education Experience</h2>
+      <ul>
+        <li>[<i>2018.09 - 2024.06</i>] Ph.D. in <i>Department of Computer Science</i>, Tsinghua University</li>
+        <li>[<i>2014.09 - 2018.06</i>] B.S. in <i>School of Computer Science and Engineering</i>, University of Electronic Science and Technology of China (UESTC)</li>
+      </ul>
     </section>
 
-    <section class="links">
-      <h2>elsewhere</h2>
-      <a href="https://github.com/yzim">github</a>
+    <section>
+      <h2>Publications</h2>
+      <ul class="publication-list">
+        <li>
+          <div class="pub-title">[Preprint] DPC: A Distributed Page Cache over CXL</div>
+          <div class="authors">Shai Bergman, <span class="me">Zhe Yang</span>, Julien Eudine, Giorgio Negro, Onur Mutlu, Arash Tavakkol, Ji Zhang</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://arxiv.org/html/2604.19494v1">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">Switch∆: Asynchronous Metadata Updating for Distributed Storage with In-Network Data Visibility</div>
+          <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, <span class="me">Zhe Yang</span>, Shuo Liu, <a data-author="jiwu-shu" href="#">Jiwu Shu</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a></div>
+          <div class="venue">42nd IEEE International Conference on Data Engineering <strong>(ICDE'26)</strong>, 2026</div>
+        </li>
+        <li>
+          <div class="pub-title">Efficiently Enlarging RDMA-Attached Memory with SSD</div>
+          <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong>, 2025</div>
+          <div class="award-note">Fast-tracked</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://dl.acm.org/doi/10.1145/3700772">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">TeRM: Extending RDMA-Attached Memory with SSD</div>
+          <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">The 22nd USENIX Conference on File and Storage Technologies <strong>(FAST'24)</strong>, 2024</div>
+          <div class="award-note">Best Paper Award Candidate; Invited for fast-tracked publication in ACM Transactions on Storage</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://www.usenix.org/conference/fast24/presentation/yang-zhe">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+            <a class="resource-link code-link" href="https://github.com/thustorage/TeRM" data-repo="thustorage/TeRM" data-default-stars="45">
+              <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+              Code
+              <span class="star-count">★ 45</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">λ-IO: A Unified IO Stack for Computational Storage</div>
+          <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youmin-chen" href="#">Youmin Chen</a>, <a data-author="junru-li" href="#">Junru Li</a>, Siyu He, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">The 21st USENIX Conference on File and Storage Technologies <strong>(FAST'23)</strong>, 2023</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://www.usenix.org/conference/fast23/presentation/yang-zhe">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+            <a class="resource-link code-link" href="https://github.com/thustorage/lambda-io" data-repo="thustorage/lambda-io" data-default-stars="80">
+              <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+              Code
+              <span class="star-count">★ 80</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">RIO: Order-Preserving and CPU-Efficient Remote Storage Access</div>
+          <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">The 18th European Conference on Computer Systems <strong>(EuroSys'23)</strong>, 2023</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567495">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">Efficient Crash Consistency for NVMe over PCIe and RDMA</div>
+          <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong>, 2023</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://dl.acm.org/doi/full/10.1145/3568428">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">AlNiCo: SmartNIC-accelerated Contention-aware Request Scheduling for Transaction Processing</div>
+          <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, Jiazhen Lin, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'22)</strong>, 2022</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://www.usenix.org/conference/atc22/presentation/li-junru">
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">Crash Consistent Non-Volatile Memory Express</div>
+          <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">The 28th ACM Symposium on Operating Systems Principles <strong>(SOSP'21)</strong>, 2021</div>
+        </li>
+        <li>
+          <div class="pub-title">CoinPurse: A Device-Assisted File System with Dual Interfaces</div>
+          <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="erci-xu" href="#">Erci Xu</a>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">Design Automation Conference <strong>(DAC'20)</strong>, 2020</div>
+        </li>
+        <li>
+          <div class="pub-title">OCVM: Optimizing the Isolation of Virtual Machines with Open-Channel SSDs</div>
+          <div class="authors">Zhe Liu, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, Fei Li, <span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">International Conference on Algorithms and Architectures for Parallel Processing <strong>(ICA3PP'20)</strong>, 2020</div>
+          <div class="resource-links">
+            <a class="resource-link" href="https://link.springer.com/chapter/10.1007/978-3-030-60245-1_29">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.75A1.75 1.75 0 0 1 4.75 0h4.69c.46 0 .9.18 1.22.5l2.84 2.84c.32.32.5.76.5 1.22v9.69A1.75 1.75 0 0 1 12.25 16h-7.5A1.75 1.75 0 0 1 3 14.25Zm6.5.81v2.19c0 .69.56 1.25 1.25 1.25h2.19ZM5.75 8a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5Zm0 3a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5Z"/></svg>
+              Paper
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">SineKV: Decoupled Secondary Indexing for LSM-based Key-Value Stores</div>
+          <div class="authors">Fei Li, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">40th IEEE International Conference on Distributed Computing Systems <strong>(ICDCS'20)</strong>, 2020</div>
+        </li>
+        <li>
+          <div class="pub-title">OCStore: Accelerating Distributed Object Storage with Open-Channel SSDs</div>
+          <div class="authors"><a data-author="youyou-lu" href="#">Youyou Lu</a>, Jiacheng Zhang, <span class="me">Zhe Yang</span>, Liyang Pan, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
+          <div class="venue">The 39th IEEE International Conference on Distributed Computing Systems <strong>(ICDCS'19)</strong>, 2019</div>
+        </li>
+        <li>
+          <div class="pub-title">Cognitive SSD: A Deep Learning Engine for Energy-Efficient Data Retrieval</div>
+          <div class="authors">Shengwen Liang, Ying Wang, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, Huawei Li, Xiaowei Li</div>
+          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'19)</strong>, 2019</div>
+        </li>
+      </ul>
     </section>
 
-    <footer>&copy; 2026 yzim</footer>
+    <section>
+      <h2>Honors and Awards</h2>
+      <ul>
+        <li>[2024] Outstanding Graduate, Department of Computer Science, Tsinghua University（清华大学计算机系优秀毕业生）</li>
+        <li>[2023] Huawei Top Minds offer（华为天才少年）</li>
+        <li>[2020] National Scholarship, Tsinghua University（国家奖学金，清华大学）</li>
+        <li>[2018] Outstanding Graduate of UESTC（电子科技大学优秀毕业生）</li>
+        <li>[2018] Tanglixin Scholarship（唐立新奖学金）</li>
+        <li>[2017] Finalist Award of MCM/ICM (top 0.4%)（美国大学生数学建模竞赛Finalist）</li>
+        <li>[2016] National Scholarship, UESTC（国家奖学金，电子科技大学）</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Zhe Yang. Last updated on June 14, 2026.</p>
+    </footer>
   </main>
+  <script>
+    function bindAuthorLinks() {
+      const authorLinks = {
+        "junru-li": "https://junru.li",
+        "qing-wang": "https://wangqing.io/",
+        "jiwu-shu": "http://storage.cs.tsinghua.edu.cn/~jiwu-shu/",
+        "youyou-lu": "http://storage.cs.tsinghua.edu.cn/~lu/",
+        "xiaojian-liao": "https://liaoxiaojian.github.io/",
+        "youmin-chen": "https://chenyoumin1993.github.io/",
+        "erci-xu": "https://giorgioercixu.github.io/"
+      };
+
+      document.querySelectorAll(".authors a[data-author]").forEach((link) => {
+        const href = authorLinks[link.dataset.author];
+        if (href) {
+          link.href = href;
+        }
+      });
+    }
+
+    async function loadGitHubStars() {
+      const codeLinks = document.querySelectorAll(".code-link[data-repo]");
+
+      await Promise.all(Array.from(codeLinks, async (link) => {
+        const repo = link.dataset.repo;
+        if (!repo) return;
+
+        try {
+          const response = await fetch("https://api.github.com/repos/" + repo);
+          if (!response.ok) return;
+
+          const data = await response.json();
+          if (typeof data.stargazers_count !== "number") return;
+
+          let count = link.querySelector(".star-count");
+          if (!count) {
+            count = document.createElement("span");
+            count.className = "star-count";
+            link.appendChild(count);
+          }
+          count.textContent = "★ " + data.stargazers_count;
+        } catch (error) {
+          console.error("Failed to load star count for", repo, error);
+        }
+      }));
+    }
+
+    bindAuthorLinks();
+    loadGitHubStars();
+  </script>
 </body>
 </html>
