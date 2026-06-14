@@ -7,12 +7,23 @@
   <meta name="description" content="Homepage of Zhe Yang.">
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #1c2430;
-      --muted: #556070;
-      --line: #e3e8ef;
-      --accent: #1c63a5;
-      --soft: #f5f8fc;
+      --page-bg: #ffffff;
+      --text-color: #1c2430;
+      --muted-color: #556070;
+      --border-color: #e3e8ef;
+      --link-color: #1c63a5;
+      --surface-color: #f5f8fc;
+      --highlight-color: #b54708;
+      --chip-radius: 999px;
+    }
+
+    body.dark-mode {
+      --page-bg: #0f141b;
+      --text-color: #e8edf3;
+      --muted-color: #a5b0bf;
+      --border-color: #273141;
+      --link-color: #8ab4e6;
+      --surface-color: #18212c;
     }
 
     * {
@@ -21,15 +32,15 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
+      background: var(--page-bg);
+      color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 15.5px;
       line-height: 1.58;
     }
 
     a {
-      color: var(--accent);
+      color: var(--link-color);
       text-decoration: none;
     }
 
@@ -47,18 +58,23 @@
       padding-bottom: 0.25rem;
     }
 
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .header-main {
+      min-width: 0;
+    }
+
     h1 {
       margin: 0 0 6px;
       font-size: 1.82rem;
       line-height: 1.15;
       font-weight: 700;
       letter-spacing: -0.02em;
-    }
-
-    .role {
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 1.02rem;
     }
 
     .contact p,
@@ -73,29 +89,82 @@
       gap: 8px;
     }
 
-    .pill {
+    .pill,
+    .resource-link,
+    .theme-toggle {
       display: inline-flex;
       align-items: center;
+      border-radius: var(--chip-radius);
+    }
+
+    .pill,
+    .resource-link {
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--soft);
-      color: var(--accent);
-      font-size: 0.92rem;
+      background: var(--surface-color);
+      color: var(--link-color);
       font-weight: 400;
     }
 
-    .pill svg {
-      width: 14px;
-      height: 14px;
+    .pill {
+      padding: 4px 10px;
+      font-size: 0.92rem;
+    }
+
+    .pill svg,
+    .resource-link svg {
       fill: currentColor;
       flex: 0 0 auto;
+    }
+
+    .pill svg,
+    .theme-toggle svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .theme-toggle {
+      gap: 7px;
+      padding: 5px 11px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-color);
+      color: var(--muted-color);
+      font: inherit;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      flex: 0 0 auto;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text-color);
+      border-color: var(--muted-color);
+    }
+
+    .theme-toggle svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .theme-toggle .theme-option {
+      display: none;
+    }
+
+    .theme-toggle[data-mode="light"] .theme-option-light,
+    .theme-toggle[data-mode="dark"] .theme-option-dark,
+    .theme-toggle[data-mode="auto"] .theme-option-auto {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
     }
 
     section {
       padding-top: 14px;
       margin-top: 14px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border-color);
     }
 
     h2 {
@@ -127,25 +196,28 @@
     .publication-list li {
       margin: 0 0 14px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #eef2f6;
     }
 
     .publication-list li:last-child {
-      border-bottom: none;
       padding-bottom: 0;
     }
 
     .pub-title {
       font-weight: 600;
-      color: var(--text);
+      color: var(--text-color);
       line-height: 1.45;
     }
 
     .authors,
     .venue {
-      color: var(--muted);
+      color: var(--muted-color);
       font-size: 0.94rem;
       line-height: 1.5;
+    }
+
+    .ccf-rank {
+      color: var(--highlight-color);
+      font-weight: 400;
     }
 
     .authors a {
@@ -162,19 +234,13 @@
     }
 
     .me {
-      color: var(--text);
+      color: var(--text-color);
       font-weight: 700;
-    }
-
-    .award-inline {
-      color: #b54708;
-      font-size: 0.9rem;
-      font-style: italic;
     }
 
     .award-note {
       margin-top: 3px;
-      color: #b54708;
+      color: var(--highlight-color);
       font-size: 0.9rem;
       font-style: italic;
       line-height: 1.45;
@@ -188,37 +254,28 @@
     }
 
     .resource-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       padding: 3px 9px;
-      border-radius: 999px;
-      background: var(--soft);
       font-size: 0.86rem;
-      font-weight: 400;
-      color: var(--accent);
       line-height: 1.15;
     }
 
     .resource-link svg {
       width: 13px;
       height: 13px;
-      fill: currentColor;
-      flex: 0 0 auto;
     }
 
     .star-count {
-      color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 500;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
       margin-left: 2px;
     }
 
     footer {
       margin-top: 22px;
       padding-top: 14px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+      border-top: 1px solid var(--border-color);
+      color: var(--muted-color);
       font-size: 0.94rem;
       text-align: center;
     }
@@ -232,6 +289,15 @@
     @media (max-width: 567px) {
       .page {
         padding: 24px 16px 40px;
+      }
+
+      .header-top {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .theme-toggle {
+        margin-top: 2px;
       }
 
       .quick-links {
@@ -251,12 +317,49 @@
     <symbol id="icon-paper" viewBox="0 0 16 16">
       <path d="M3 1.75A1.75 1.75 0 0 1 4.75 0h4.69c.46 0 .9.18 1.22.5l2.84 2.84c.32.32.5.76.5 1.22v9.69A1.75 1.75 0 0 1 12.25 16h-7.5A1.75 1.75 0 0 1 3 14.25Zm6.5.81v2.19c0 .69.56 1.25 1.25 1.25h2.19ZM5.75 8a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5Zm0 3a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5Z"/>
     </symbol>
+    <symbol id="icon-sun" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="3"></circle>
+      <path d="M8 1.5v2"></path>
+      <path d="M8 12.5v2"></path>
+      <path d="M1.5 8h2"></path>
+      <path d="M12.5 8h2"></path>
+      <path d="M3.4 3.4l1.4 1.4"></path>
+      <path d="M11.2 11.2l1.4 1.4"></path>
+      <path d="M3.4 12.6l1.4-1.4"></path>
+      <path d="M11.2 4.8l1.4-1.4"></path>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 16 16">
+      <path d="M10.8 1.8a5.9 5.9 0 1 0 3.4 10.8A6.5 6.5 0 1 1 10.8 1.8Z"></path>
+    </symbol>
+    <symbol id="icon-system" viewBox="0 0 16 16">
+      <rect x="2.25" y="3" width="11.5" height="8" rx="1.5"></rect>
+      <path d="M6.1 13h3.8"></path>
+      <path d="M8 11v2"></path>
+    </symbol>
   </svg>
   <main class="page">
     <header class="header-flex">
-      <h1>Zhe Yang</h1>
-      <div class="contact">
-        <p>Email: yangzhe DOT ac AT outlook DOT com</p>
+      <div class="header-top">
+        <div class="header-main">
+          <h1>Zhe Yang</h1>
+          <div class="contact">
+            <p>Email: yangzhe DOT ac AT outlook DOT com</p>
+          </div>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" data-mode="auto" aria-label="Theme mode: auto">
+          <span class="theme-option theme-option-auto">
+            <svg aria-hidden="true"><use href="#icon-system"></use></svg>
+            <span>System</span>
+          </span>
+          <span class="theme-option theme-option-dark">
+            <svg aria-hidden="true"><use href="#icon-moon"></use></svg>
+            <span>Dark</span>
+          </span>
+          <span class="theme-option theme-option-light">
+            <svg aria-hidden="true"><use href="#icon-sun"></use></svg>
+            <span>Light</span>
+          </span>
+        </button>
       </div>
       <div class="quick-links">
         <a class="pill" href="https://scholar.google.com/citations?user=jYPrgKYAAAAJ">
@@ -279,8 +382,8 @@
     <section>
       <h2>Education Experience</h2>
       <ul>
-        <li>[<i>2018.09 - 2024.06</i>] Ph.D. in <i>Department of Computer Science</i>, Tsinghua University</li>
-        <li>[<i>2014.09 - 2018.06</i>] B.S. in <i>School of Computer Science and Engineering</i>, University of Electronic Science and Technology of China (UESTC)</li>
+        <li>[2018.09 - 2024.06] Ph.D. in Department of Computer Science, Tsinghua University</li>
+        <li>[2014.09 - 2018.06] B.S. in School of Computer Science and Engineering, University of Electronic Science and Technology of China (UESTC)</li>
       </ul>
     </section>
 
@@ -300,12 +403,12 @@
         <li>
           <div class="pub-title">Switch∆: Asynchronous Metadata Updating for Distributed Storage with In-Network Data Visibility</div>
           <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, <span class="me">Zhe Yang</span>, Shuo Liu, <a data-author="jiwu-shu" href="#">Jiwu Shu</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a></div>
-          <div class="venue">42nd IEEE International Conference on Data Engineering <strong>(ICDE'26)</strong>, 2026</div>
+          <div class="venue">42nd IEEE International Conference on Data Engineering <strong>(ICDE'26)</strong> <span class="ccf-rank">(CCF-A)</span>, 2026</div>
         </li>
         <li>
           <div class="pub-title">Efficiently Enlarging RDMA-Attached Memory with SSD</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong>, 2025</div>
+          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong> <span class="ccf-rank">(CCF-A)</span>, 2025</div>
           <div class="award-note">Fast-tracked</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/10.1145/3700772">
@@ -317,7 +420,7 @@
         <li>
           <div class="pub-title">TeRM: Extending RDMA-Attached Memory with SSD</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 22nd USENIX Conference on File and Storage Technologies <strong>(FAST'24)</strong>, 2024</div>
+          <div class="venue">The 22nd USENIX Conference on File and Storage Technologies <strong>(FAST'24)</strong> <span class="ccf-rank">(CCF-A)</span>, 2024</div>
           <div class="award-note">Best Paper Award Candidate; Invited for fast-tracked publication in ACM Transactions on Storage</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast24/presentation/yang-zhe">
@@ -334,7 +437,7 @@
         <li>
           <div class="pub-title">λ-IO: A Unified IO Stack for Computational Storage</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youmin-chen" href="#">Youmin Chen</a>, <a data-author="junru-li" href="#">Junru Li</a>, Siyu He, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 21st USENIX Conference on File and Storage Technologies <strong>(FAST'23)</strong>, 2023</div>
+          <div class="venue">The 21st USENIX Conference on File and Storage Technologies <strong>(FAST'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast23/presentation/yang-zhe">
               <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
@@ -350,7 +453,7 @@
         <li>
           <div class="pub-title">RIO: Order-Preserving and CPU-Efficient Remote Storage Access</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 18th European Conference on Computer Systems <strong>(EuroSys'23)</strong>, 2023</div>
+          <div class="venue">The 18th European Conference on Computer Systems <strong>(EuroSys'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567495">
               <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
@@ -361,7 +464,7 @@
         <li>
           <div class="pub-title">Efficient Crash Consistency for NVMe over PCIe and RDMA</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong>, 2023</div>
+          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/full/10.1145/3568428">
               <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
@@ -372,7 +475,7 @@
         <li>
           <div class="pub-title">AlNiCo: SmartNIC-accelerated Contention-aware Request Scheduling for Transaction Processing</div>
           <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, Jiazhen Lin, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'22)</strong>, 2022</div>
+          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'22)</strong> <span class="ccf-rank">(CCF-A)</span>, 2022</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/atc22/presentation/li-junru">
               <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
@@ -383,12 +486,12 @@
         <li>
           <div class="pub-title">Crash Consistent Non-Volatile Memory Express</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 28th ACM Symposium on Operating Systems Principles <strong>(SOSP'21)</strong>, 2021</div>
+          <div class="venue">The 28th ACM Symposium on Operating Systems Principles <strong>(SOSP'21)</strong> <span class="ccf-rank">(CCF-A)</span>, 2021</div>
         </li>
         <li>
           <div class="pub-title">CoinPurse: A Device-Assisted File System with Dual Interfaces</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="erci-xu" href="#">Erci Xu</a>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">Design Automation Conference <strong>(DAC'20)</strong>, 2020</div>
+          <div class="venue">Design Automation Conference <strong>(DAC'20)</strong> <span class="ccf-rank">(CCF-A)</span>, 2020</div>
         </li>
         <li>
           <div class="pub-title">OCVM: Optimizing the Isolation of Virtual Machines with Open-Channel SSDs</div>
@@ -396,7 +499,7 @@
           <div class="venue">International Conference on Algorithms and Architectures for Parallel Processing <strong>(ICA3PP'20)</strong>, 2020</div>
           <div class="resource-links">
             <a class="resource-link" href="https://link.springer.com/chapter/10.1007/978-3-030-60245-1_29">
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.75A1.75 1.75 0 0 1 4.75 0h4.69c.46 0 .9.18 1.22.5l2.84 2.84c.32.32.5.76.5 1.22v9.69A1.75 1.75 0 0 1 12.25 16h-7.5A1.75 1.75 0 0 1 3 14.25Zm6.5.81v2.19c0 .69.56 1.25 1.25 1.25h2.19ZM5.75 8a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5Zm0 3a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5Z"/></svg>
+              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
               Paper
             </a>
           </div>
@@ -414,7 +517,7 @@
         <li>
           <div class="pub-title">Cognitive SSD: A Deep Learning Engine for Energy-Efficient Data Retrieval</div>
           <div class="authors">Shengwen Liang, Ying Wang, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, Huawei Li, Xiaowei Li</div>
-          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'19)</strong>, 2019</div>
+          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'19)</strong> <span class="ccf-rank">(CCF-A)</span>, 2019</div>
         </li>
       </ul>
     </section>
@@ -433,30 +536,71 @@
     </section>
 
     <footer>
-      <p>&copy; 2026 Zhe Yang. Last updated on June 14, 2026.</p>
+      <p>&copy; 2026 Zhe Yang. Last updated on June 14, 2026. Built with a coding agent.</p>
     </footer>
   </main>
   <script>
-    function bindAuthorLinks() {
-      const authorLinks = {
-        "junru-li": "https://junru.li",
-        "qing-wang": "https://wangqing.io/",
-        "jiwu-shu": "http://storage.cs.tsinghua.edu.cn/~jiwu-shu/",
-        "youyou-lu": "http://storage.cs.tsinghua.edu.cn/~lu/",
-        "xiaojian-liao": "https://liaoxiaojian.github.io/",
-        "youmin-chen": "https://chenyoumin1993.github.io/",
-        "erci-xu": "https://giorgioercixu.github.io/"
+    const THEME_STORAGE_KEY = "yz-homepage-theme";
+    const AUTHOR_LINKS = {
+      "junru-li": "https://junru.li",
+      "qing-wang": "https://wangqing.io/",
+      "jiwu-shu": "http://storage.cs.tsinghua.edu.cn/~jiwu-shu/",
+      "youyou-lu": "http://storage.cs.tsinghua.edu.cn/~lu/",
+      "xiaojian-liao": "https://liaoxiaojian.github.io/",
+      "youmin-chen": "https://chenyoumin1993.github.io/",
+      "erci-xu": "https://giorgioercixu.github.io/"
+    };
+
+    function setTheme(theme, toggleButton, activeMode) {
+      const isDark = theme === "dark";
+      document.body.classList.toggle("dark-mode", isDark);
+      toggleButton.dataset.mode = activeMode;
+      toggleButton.setAttribute("aria-label", "Theme mode: " + activeMode);
+    }
+
+    function initThemeToggle() {
+      const toggleButton = document.getElementById("theme-toggle");
+      if (!toggleButton) return;
+
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const modeOrder = ["auto", "dark", "light"];
+      const getSystemTheme = () => mediaQuery.matches ? "dark" : "light";
+      const getStoredMode = () => {
+        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+        return modeOrder.includes(storedTheme) ? storedTheme : "auto";
       };
 
+      const applyMode = (mode) => {
+        const resolvedTheme = mode === "auto" ? getSystemTheme() : mode;
+        setTheme(resolvedTheme, toggleButton, mode);
+      };
+
+      applyMode(getStoredMode());
+
+      toggleButton.addEventListener("click", () => {
+        const currentMode = getStoredMode();
+        const nextMode = modeOrder[(modeOrder.indexOf(currentMode) + 1) % modeOrder.length];
+        localStorage.setItem(THEME_STORAGE_KEY, nextMode);
+        applyMode(nextMode);
+      });
+
+      mediaQuery.addEventListener("change", () => {
+        if (getStoredMode() === "auto") {
+          applyMode("auto");
+        }
+      });
+    }
+
+    function bindAuthorLinks() {
       document.querySelectorAll(".authors a[data-author]").forEach((link) => {
-        const href = authorLinks[link.dataset.author];
+        const href = AUTHOR_LINKS[link.dataset.author];
         if (href) {
           link.href = href;
         }
       });
     }
 
-    async function loadGitHubStars() {
+    async function updateGitHubStars() {
       const codeLinks = document.querySelectorAll(".code-link[data-repo]");
 
       await Promise.all(Array.from(codeLinks, async (link) => {
@@ -483,8 +627,9 @@
       }));
     }
 
+    initThemeToggle();
     bindAuthorLinks();
-    loadGitHubStars();
+    updateGitHubStars();
   </script>
 </body>
 </html>
