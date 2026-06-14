@@ -71,7 +71,7 @@
     }
 
     h1 {
-      margin: 0 0 0.375rem;
+      margin: 0 0 1rem;
       font-size: 1.82rem;
       line-height: 1.15;
       font-weight: 700;
@@ -83,8 +83,31 @@
       margin: 0 0 0.3125rem;
     }
 
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3125rem;
+    }
+
+    .contact {
+      margin: 0;
+    }
+
+    .contact .pill {
+      color: var(--muted-color);
+      cursor: default;
+    }
+
+    .contact .pill:hover .pill-content {
+      box-shadow: none;
+    }
+
+    .intro {
+      margin-top: 0.875rem;
+    }
+
     .quick-links {
-      margin-top: 0.625rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
@@ -257,8 +280,7 @@
     }
 
     .me {
-      color: var(--text-color);
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .award-note {
@@ -359,6 +381,9 @@
       <path d="M6.1 13h3.8"></path>
       <path d="M8 11v2"></path>
     </symbol>
+    <symbol id="icon-email" viewBox="0 0 16 16">
+      <path d="M2.25 3.25h11.5a1.25 1.25 0 0 1 1.25 1.25v7a1.25 1.25 0 0 1-1.25 1.25H2.25A1.25 1.25 0 0 1 1 11.5v-7a1.25 1.25 0 0 1 1.25-1.25Zm.31 1.53 5.03 3.86a.67.67 0 0 0 .82 0l5.03-3.86Z"/>
+    </symbol>
   </svg>
   <main class="page">
     <header class="header-flex">
@@ -381,27 +406,35 @@
           </span>
         </button>
       </div>
-      <div class="contact">
-        <p>Email: yangzhe DOT ac AT outlook DOT com</p>
-      </div>
-      <div class="quick-links">
-        <a class="pill" href="https://scholar.google.com/citations?user=jYPrgKYAAAAJ">
-          <span class="pill-content">
-            <svg aria-hidden="true"><use href="#icon-scholar"></use></svg>
-            <span>Google Scholar</span>
-          </span>
-        </a>
-        <a class="pill" href="https://github.com/yzim">
-          <span class="pill-content">
-            <svg aria-hidden="true"><use href="#icon-github"></use></svg>
-            <span>GitHub</span>
-          </span>
-        </a>
+      <div class="contact-block">
+        <div class="contact">
+          <p>
+            <span class="pill">
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-email"></use></svg>
+                <span>yangzhe.ac at outlook dot com</span>
+              </span>
+            </span>
+          </p>
+        </div>
+        <div class="quick-links">
+          <a class="pill" href="https://scholar.google.com/citations?user=jYPrgKYAAAAJ">
+            <span class="pill-content">
+              <svg aria-hidden="true"><use href="#icon-scholar"></use></svg>
+              <span>Google Scholar</span>
+            </span>
+          </a>
+          <a class="pill" href="https://github.com/yzim">
+            <span class="pill-content">
+              <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+              <span>GitHub</span>
+            </span>
+          </a>
+        </div>
       </div>
     </header>
 
     <section class="intro">
-      <h2>About Me</h2>
       <p>I currently work on next-generation storage at Huawei, driven by emerging applications and new hardware platforms.</p>
       <p>I received my Ph.D. degree in the <a href="https://www.cs.tsinghua.edu.cn/csen/">Department of Computer Science and Technology</a>, <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>, supervised by Prof. <a href="http://storage.cs.tsinghua.edu.cn/~jiwu-shu/">Jiwu Shu</a> and <a href="http://storage.cs.tsinghua.edu.cn/~lu/">Youyou Lu</a> in the <a href="http://storage.cs.tsinghua.edu.cn/">Storage Group</a>. My Ph.D. research especially focused on storage systems for heterogeneous hardware, together with persistent memory, RDMA, and near-data processing.</p>
     </section>
@@ -432,12 +465,12 @@
         <li>
           <div class="pub-title">Switch∆: Asynchronous Metadata Updating for Distributed Storage with In-Network Data Visibility</div>
           <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, <span class="me">Zhe Yang</span>, Shuo Liu, <a data-author="jiwu-shu" href="#">Jiwu Shu</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a></div>
-          <div class="venue">42nd IEEE International Conference on Data Engineering <strong>(ICDE'26)</strong> <span class="ccf-rank">(CCF-A)</span>, 2026</div>
+          <div class="venue">42nd IEEE International Conference on Data Engineering (ICDE'26) <span class="ccf-rank">(CCF-A)</span>, 2026</div>
         </li>
         <li>
           <div class="pub-title">Efficiently Enlarging RDMA-Attached Memory with SSD</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong> <span class="ccf-rank">(CCF-A)</span>, 2025</div>
+          <div class="venue">ACM Transactions on Storage (TOS) <span class="ccf-rank">(CCF-A)</span>, 2025</div>
           <div class="award-note">Fast-tracked</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/10.1145/3700772">
@@ -451,7 +484,7 @@
         <li>
           <div class="pub-title">TeRM: Extending RDMA-Attached Memory with SSD</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="qing-wang" href="#">Qing Wang</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, Keji Huang, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 22nd USENIX Conference on File and Storage Technologies <strong>(FAST'24)</strong> <span class="ccf-rank">(CCF-A)</span>, 2024</div>
+          <div class="venue">The 22nd USENIX Conference on File and Storage Technologies (FAST'24) <span class="ccf-rank">(CCF-A)</span>, 2024</div>
           <div class="award-note">Best Paper Award Candidate; Invited for fast-tracked publication in ACM Transactions on Storage</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast24/presentation/yang-zhe">
@@ -472,7 +505,7 @@
         <li>
           <div class="pub-title">λ-IO: A Unified IO Stack for Computational Storage</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youmin-chen" href="#">Youmin Chen</a>, <a data-author="junru-li" href="#">Junru Li</a>, Siyu He, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 21st USENIX Conference on File and Storage Technologies <strong>(FAST'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
+          <div class="venue">The 21st USENIX Conference on File and Storage Technologies (FAST'23) <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast23/presentation/yang-zhe">
               <span class="pill-content">
@@ -492,7 +525,7 @@
         <li>
           <div class="pub-title">RIO: Order-Preserving and CPU-Efficient Remote Storage Access</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 18th European Conference on Computer Systems <strong>(EuroSys'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
+          <div class="venue">The 18th European Conference on Computer Systems (EuroSys'23) <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567495">
               <span class="pill-content">
@@ -505,7 +538,7 @@
         <li>
           <div class="pub-title">Efficient Crash Consistency for NVMe over PCIe and RDMA</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
+          <div class="venue">ACM Transactions on Storage (TOS) <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/full/10.1145/3568428">
               <span class="pill-content">
@@ -518,7 +551,7 @@
         <li>
           <div class="pub-title">AlNiCo: SmartNIC-accelerated Contention-aware Request Scheduling for Transaction Processing</div>
           <div class="authors"><a data-author="junru-li" href="#">Junru Li</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="qing-wang" href="#">Qing Wang</a>, Jiazhen Lin, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'22)</strong> <span class="ccf-rank">(CCF-A)</span>, 2022</div>
+          <div class="venue">USENIX Annual Technical Conference (USENIX ATC'22) <span class="ccf-rank">(CCF-A)</span>, 2022</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/atc22/presentation/li-junru">
               <span class="pill-content">
@@ -531,17 +564,17 @@
         <li>
           <div class="pub-title">Crash Consistent Non-Volatile Memory Express</div>
           <div class="authors"><a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 28th ACM Symposium on Operating Systems Principles <strong>(SOSP'21)</strong> <span class="ccf-rank">(CCF-A)</span>, 2021</div>
+          <div class="venue">The 28th ACM Symposium on Operating Systems Principles (SOSP'21) <span class="ccf-rank">(CCF-A)</span>, 2021</div>
         </li>
         <li>
           <div class="pub-title">CoinPurse: A Device-Assisted File System with Dual Interfaces</div>
           <div class="authors"><span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="erci-xu" href="#">Erci Xu</a>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">Design Automation Conference <strong>(DAC'20)</strong> <span class="ccf-rank">(CCF-A)</span>, 2020</div>
+          <div class="venue">Design Automation Conference (DAC'20) <span class="ccf-rank">(CCF-A)</span>, 2020</div>
         </li>
         <li>
           <div class="pub-title">OCVM: Optimizing the Isolation of Virtual Machines with Open-Channel SSDs</div>
           <div class="authors">Zhe Liu, <a data-author="xiaojian-liao" href="#">Xiaojian Liao</a>, Fei Li, <span class="me">Zhe Yang</span>, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">International Conference on Algorithms and Architectures for Parallel Processing <strong>(ICA3PP'20)</strong>, 2020</div>
+          <div class="venue">International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP'20), 2020</div>
           <div class="resource-links">
             <a class="resource-link" href="https://link.springer.com/chapter/10.1007/978-3-030-60245-1_29">
               <span class="pill-content">
@@ -554,17 +587,17 @@
         <li>
           <div class="pub-title">SineKV: Decoupled Secondary Indexing for LSM-based Key-Value Stores</div>
           <div class="authors">Fei Li, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">40th IEEE International Conference on Distributed Computing Systems <strong>(ICDCS'20)</strong>, 2020</div>
+          <div class="venue">40th IEEE International Conference on Distributed Computing Systems (ICDCS'20), 2020</div>
         </li>
         <li>
           <div class="pub-title">OCStore: Accelerating Distributed Object Storage with Open-Channel SSDs</div>
           <div class="authors"><a data-author="youyou-lu" href="#">Youyou Lu</a>, Jiacheng Zhang, <span class="me">Zhe Yang</span>, Liyang Pan, <a data-author="jiwu-shu" href="#">Jiwu Shu</a></div>
-          <div class="venue">The 39th IEEE International Conference on Distributed Computing Systems <strong>(ICDCS'19)</strong>, 2019</div>
+          <div class="venue">The 39th IEEE International Conference on Distributed Computing Systems (ICDCS'19), 2019</div>
         </li>
         <li>
           <div class="pub-title">Cognitive SSD: A Deep Learning Engine for Energy-Efficient Data Retrieval</div>
           <div class="authors">Shengwen Liang, Ying Wang, <a data-author="youyou-lu" href="#">Youyou Lu</a>, <span class="me">Zhe Yang</span>, Huawei Li, Xiaowei Li</div>
-          <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'19)</strong> <span class="ccf-rank">(CCF-A)</span>, 2019</div>
+          <div class="venue">USENIX Annual Technical Conference (USENIX ATC'19) <span class="ccf-rank">(CCF-A)</span>, 2019</div>
         </li>
       </ul>
     </section>
@@ -583,7 +616,7 @@
     </section>
 
     <footer>
-      <p>&copy; 2026 Zhe Yang. Last updated on June 14, 2026. Built with a coding agent.</p>
+      <p>&copy; 2026 Zhe Yang. Built with a coding agent.</p>
     </footer>
   </main>
   <script>
