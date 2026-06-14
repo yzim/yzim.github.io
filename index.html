@@ -8,22 +8,23 @@
   <style>
     :root {
       --page-bg: #ffffff;
-      --text-color: #1c2430;
-      --muted-color: #556070;
-      --border-color: #e3e8ef;
-      --link-color: #1c63a5;
-      --surface-color: #f5f8fc;
-      --highlight-color: #b54708;
+      --text-color: #222222;
+      --muted-color: #666a70;
+      --border-color: #e5e5e7;
+      --link-color: #2367b3;
+      --surface-color: #fafafa;
+      --highlight-color: #cf4f43;
       --chip-radius: 999px;
     }
 
     body.dark-mode {
-      --page-bg: #0f141b;
-      --text-color: #e8edf3;
-      --muted-color: #a5b0bf;
-      --border-color: #273141;
-      --link-color: #8ab4e6;
-      --surface-color: #18212c;
+      --page-bg: #111214;
+      --text-color: #f5f5f6;
+      --muted-color: #c9cace;
+      --border-color: #2d2f33;
+      --link-color: #9fbfff;
+      --surface-color: #17181a;
+      --highlight-color: #ff8a80;
     }
 
     * {
@@ -35,7 +36,7 @@
       background: var(--page-bg);
       color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 15.5px;
+      font-size: 0.96875rem;
       line-height: 1.58;
     }
 
@@ -49,9 +50,9 @@
     }
 
     .page {
-      max-width: 920px;
+      max-width: 57.5rem;
       margin: 0 auto;
-      padding: 30px 22px 48px;
+      padding: 1.875rem 1.375rem 3rem;
     }
 
     .header-flex {
@@ -62,7 +63,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 14px;
+      gap: 0.875rem;
     }
 
     .header-main {
@@ -70,7 +71,7 @@
     }
 
     h1 {
-      margin: 0 0 6px;
+      margin: 0 0 0.375rem;
       font-size: 1.82rem;
       line-height: 1.15;
       font-weight: 700;
@@ -79,14 +80,14 @@
 
     .contact p,
     .intro p {
-      margin: 0 0 5px;
+      margin: 0 0 0.3125rem;
     }
 
     .quick-links {
-      margin-top: 10px;
+      margin-top: 0.625rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
     .pill,
@@ -99,15 +100,25 @@
 
     .pill,
     .resource-link {
-      gap: 6px;
+      gap: 0.375rem;
       background: var(--surface-color);
       color: var(--link-color);
       font-weight: 400;
+      border: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .pill-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      box-shadow: inset 0 -1px 0 transparent;
+      transition: box-shadow 0.15s ease;
     }
 
     .pill {
-      padding: 4px 10px;
-      font-size: 0.92rem;
+      padding: 0.1875rem 0.5625rem;
+      font-size: 0.88rem;
     }
 
     .pill svg,
@@ -118,13 +129,13 @@
 
     .pill svg,
     .theme-toggle svg {
-      width: 14px;
-      height: 14px;
+      width: 0.875rem;
+      height: 0.875rem;
     }
 
     .theme-toggle {
-      gap: 7px;
-      padding: 5px 11px;
+      gap: 0.4375rem;
+      padding: 0.3125rem 0.6875rem;
       border: 1px solid var(--border-color);
       background: var(--surface-color);
       color: var(--muted-color);
@@ -139,6 +150,16 @@
     .theme-toggle:hover {
       color: var(--text-color);
       border-color: var(--muted-color);
+    }
+
+    .pill:hover,
+    .resource-link:hover {
+      text-decoration: none;
+    }
+
+    .pill:hover .pill-content,
+    .resource-link:hover .pill-content {
+      box-shadow: inset 0 -1px 0 currentColor;
     }
 
     .theme-toggle svg {
@@ -158,48 +179,50 @@
     .theme-toggle[data-mode="auto"] .theme-option-auto {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 0.4375rem;
     }
 
     section {
-      padding-top: 14px;
-      margin-top: 14px;
+      padding-top: 0.875rem;
+      margin-top: 0.875rem;
       border-top: 1px solid var(--border-color);
     }
 
     h2 {
-      margin: 0 0 10px;
+      margin: 0 0 0.625rem;
       font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     p {
-      margin: 0 0 8px;
+      margin: 0 0 0.5rem;
     }
 
     ul {
       margin: 0;
-      padding-left: 20px;
+      padding-left: 1.25rem;
     }
 
     li {
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
     }
 
     .publication-list {
       list-style: disc;
-      padding-left: 20px;
+      padding-left: 1.25rem;
       margin: 0;
     }
 
     .publication-list li {
-      margin: 0 0 14px;
-      padding-bottom: 12px;
+      margin: 0 0 0.875rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 0.5px solid var(--border-color);
     }
 
     .publication-list li:last-child {
       padding-bottom: 0;
+      border-bottom: none;
     }
 
     .pub-title {
@@ -239,7 +262,7 @@
     }
 
     .award-note {
-      margin-top: 3px;
+      margin-top: 0.1875rem;
       color: var(--highlight-color);
       font-size: 0.9rem;
       font-style: italic;
@@ -247,36 +270,36 @@
     }
 
     .resource-links {
-      margin-top: 5px;
+      margin-top: 0.3125rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0.625rem;
     }
 
     .resource-link {
-      padding: 3px 9px;
+      padding: 0.1875rem 0.5625rem;
       font-size: 0.86rem;
       line-height: 1.15;
     }
 
     .resource-link svg {
-      width: 13px;
-      height: 13px;
+      width: 0.8125rem;
+      height: 0.8125rem;
     }
 
     .star-count {
       color: inherit;
       font-size: inherit;
       font-weight: inherit;
-      margin-left: 2px;
+      margin-left: 0.125rem;
     }
 
     footer {
-      margin-top: 22px;
-      padding-top: 14px;
+      margin-top: 1.375rem;
+      padding-top: 0.875rem;
       border-top: 1px solid var(--border-color);
       color: var(--muted-color);
-      font-size: 0.94rem;
+      font-size: 0.84rem;
       text-align: center;
     }
 
@@ -288,16 +311,16 @@
 
     @media (max-width: 567px) {
       .page {
-        padding: 24px 16px 40px;
+        padding: 1.5rem 1rem 2.5rem;
       }
 
       .header-top {
         align-items: flex-start;
-        gap: 10px;
+        gap: 0.625rem;
       }
 
       .theme-toggle {
-        margin-top: 2px;
+        margin-top: 0.125rem;
       }
 
       .quick-links {
@@ -363,12 +386,16 @@
       </div>
       <div class="quick-links">
         <a class="pill" href="https://scholar.google.com/citations?user=jYPrgKYAAAAJ">
-          <svg aria-hidden="true"><use href="#icon-scholar"></use></svg>
-          Google Scholar
+          <span class="pill-content">
+            <svg aria-hidden="true"><use href="#icon-scholar"></use></svg>
+            <span>Google Scholar</span>
+          </span>
         </a>
         <a class="pill" href="https://github.com/yzim">
-          <svg aria-hidden="true"><use href="#icon-github"></use></svg>
-          GitHub
+          <span class="pill-content">
+            <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+            <span>GitHub</span>
+          </span>
         </a>
       </div>
     </header>
@@ -395,8 +422,10 @@
           <div class="authors">Shai Bergman, <span class="me">Zhe Yang</span>, Julien Eudine, Giorgio Negro, Onur Mutlu, Arash Tavakkol, Ji Zhang</div>
           <div class="resource-links">
             <a class="resource-link" href="https://arxiv.org/html/2604.19494v1">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
@@ -412,8 +441,10 @@
           <div class="award-note">Fast-tracked</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/10.1145/3700772">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
@@ -424,13 +455,17 @@
           <div class="award-note">Best Paper Award Candidate; Invited for fast-tracked publication in ACM Transactions on Storage</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast24/presentation/yang-zhe">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
             <a class="resource-link code-link" href="https://github.com/thustorage/TeRM" data-repo="thustorage/TeRM" data-default-stars="45">
-              <svg aria-hidden="true"><use href="#icon-github"></use></svg>
-              Code
-              <span class="star-count">★ 45</span>
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+                <span>Code</span>
+                <span class="star-count">★ 45</span>
+              </span>
             </a>
           </div>
         </li>
@@ -440,13 +475,17 @@
           <div class="venue">The 21st USENIX Conference on File and Storage Technologies <strong>(FAST'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/fast23/presentation/yang-zhe">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
             <a class="resource-link code-link" href="https://github.com/thustorage/lambda-io" data-repo="thustorage/lambda-io" data-default-stars="80">
-              <svg aria-hidden="true"><use href="#icon-github"></use></svg>
-              Code
-              <span class="star-count">★ 80</span>
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-github"></use></svg>
+                <span>Code</span>
+                <span class="star-count">★ 80</span>
+              </span>
             </a>
           </div>
         </li>
@@ -456,8 +495,10 @@
           <div class="venue">The 18th European Conference on Computer Systems <strong>(EuroSys'23)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567495">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
@@ -467,8 +508,10 @@
           <div class="venue">ACM Transactions on Storage <strong>(TOS)</strong> <span class="ccf-rank">(CCF-A)</span>, 2023</div>
           <div class="resource-links">
             <a class="resource-link" href="https://dl.acm.org/doi/full/10.1145/3568428">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
@@ -478,8 +521,10 @@
           <div class="venue">USENIX Annual Technical Conference <strong>(USENIX ATC'22)</strong> <span class="ccf-rank">(CCF-A)</span>, 2022</div>
           <div class="resource-links">
             <a class="resource-link" href="https://www.usenix.org/conference/atc22/presentation/li-junru">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
@@ -499,8 +544,10 @@
           <div class="venue">International Conference on Algorithms and Architectures for Parallel Processing <strong>(ICA3PP'20)</strong>, 2020</div>
           <div class="resource-links">
             <a class="resource-link" href="https://link.springer.com/chapter/10.1007/978-3-030-60245-1_29">
-              <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
-              Paper
+              <span class="pill-content">
+                <svg aria-hidden="true"><use href="#icon-paper"></use></svg>
+                <span>Paper</span>
+              </span>
             </a>
           </div>
         </li>
