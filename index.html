@@ -411,7 +411,7 @@
             <span class="pill pill-static">
               <span class="pill-content">
                 <svg aria-hidden="true"><use href="#icon-email"></use></svg>
-                <span>yangzhe.ac at outlook.com</span>
+                <span id="email-display" aria-label="Email address"></span>
               </span>
             </span>
           </p>
@@ -691,6 +691,20 @@
       "erci-xu": "https://giorgioercixu.github.io/"
     };
 
+    const EMAIL_BYTES = [83, 75, 68, 77, 80, 66, 79, 4, 75, 73, 106, 69, 95, 94, 70, 69, 69, 65, 4, 73, 69, 71];
+    const EMAIL_KEY = 42;
+
+    function renderEmail() {
+      const target = document.getElementById("email-display");
+      if (!target) return;
+
+      const address = String.fromCharCode(...EMAIL_BYTES.map((byte) => byte ^ EMAIL_KEY));
+
+      target.textContent = address
+        .replace(/\./g, " dot ")
+        .replace("@", " at ");
+    }
+
     function setTheme(theme, toggleButton, activeMode) {
       const isDark = theme === "dark";
       document.body.classList.toggle("dark-mode", isDark);
@@ -768,6 +782,7 @@
     }
 
     initThemeToggle();
+    renderEmail();
     bindAuthorLinks();
     updateGitHubStars();
   </script>
